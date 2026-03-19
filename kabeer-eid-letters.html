@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid Mubarak 🌙</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Caveat:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --moon: #f5e6c8;
+    --gold: #c9a84c;
+    --deep: #0a0a14;
+    --love-bg: #0d0814;
+    --love-accent: #c9748a;
+    --love-soft: #f7e8ed;
+    --dii-bg: #0a0d1a;
+    --dii-accent: #8b7fd4;
+    --dii-soft: #ede8f7;
+    --friends-bg: #080f0a;
+    --friends-accent: #5dba7d;
+    --friends-soft: #e8f7ed;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--deep);
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* ====== STARS ====== */
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--d) ease-in-out infinite alternate;
+  }
+  @keyframes twinkle {
+    from { opacity: 0.1; transform: scale(0.8); }
+    to { opacity: 0.9; transform: scale(1.2); }
+  }
+
+  /* ====== PAGES ====== */
+  .page {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+  .page.active { display: flex; }
+
+  /* ====== LOGIN PAGE ====== */
+  #login-page {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at 50% 0%, #1a1030 0%, #0a0a14 60%);
+  }
+
+  .moon {
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle at 35% 35%, #fff8e1, #f5d06e, #c9a84c);
+    border-radius: 50%;
+    box-shadow: 0 0 40px 10px rgba(201,168,76,0.3), 0 0 80px 20px rgba(201,168,76,0.1);
+    margin-bottom: 32px;
+    animation: moonFloat 4s ease-in-out infinite;
+    position: relative;
+  }
+  .moon::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #e8c860, transparent);
+    border-radius: 50%;
+    top: 15px; right: 12px;
+    opacity: 0.5;
+  }
+  @keyframes moonFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .login-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 300;
+    color: var(--moon);
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .login-sub {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: rgba(245,230,200,0.5);
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .login-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    padding: 40px 48px;
+    width: min(400px, 90vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    backdrop-filter: blur(10px);
+  }
+
+  .pw-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: rgba(245,230,200,0.6);
+    align-self: flex-start;
+    margin-bottom: -10px;
+  }
+
+  .pw-input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 14px 20px;
+    color: var(--moon);
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+  .pw-input::placeholder { color: rgba(245,230,200,0.2); font-size: 1rem; }
+  .pw-input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 20px rgba(201,168,76,0.15);
+  }
+
+  .enter-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.8), rgba(201,168,76,0.4));
+    border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 12px;
+    color: #0a0a14;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .enter-btn:hover {
+    background: linear-gradient(135deg, rgba(201,168,76,1), rgba(201,168,76,0.7));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201,168,76,0.3);
+  }
+
+  .error-msg {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: #ff8a9a;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: center;
+  }
+  .error-msg.show { opacity: 1; }
+
+  /* ====== LETTER PAGES ====== */
+  .letter-page {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px 80px;
+  }
+
+  /* LOVE PAGE */
+  #love-page {
+    background: radial-gradient(ellipse at 50% -10%, #2a0f1f 0%, #0d0814 50%);
+  }
+  #love-page .letter-accent { color: var(--love-accent); }
+  #love-page .letter-card { border-color: rgba(201,116,138,0.2); }
+  #love-page .letter-card::before { background: radial-gradient(ellipse at 50% 0%, rgba(201,116,138,0.08), transparent 60%); }
+  #love-page .letter-header { color: #f5c0cc; }
+  #love-page .letter-date { color: rgba(201,116,138,0.6); }
+  #love-page .letter-body { color: #f0dde3; }
+  #love-page .back-btn { border-color: rgba(201,116,138,0.4); color: var(--love-accent); }
+  #love-page .floating-emoji { animation: floatUp1 6s ease-in-out infinite; }
+  #love-page .page-icon { background: radial-gradient(circle at 35% 35%, #ffb3c6, #c9748a, #8b1a3a); box-shadow: 0 0 40px 10px rgba(201,116,138,0.3); }
+
+  /* DII PAGE */
+  #dii-page {
+    background: radial-gradient(ellipse at 50% -10%, #150f2a 0%, #0a0d1a 50%);
+  }
+  #dii-page .letter-accent { color: var(--dii-accent); }
+  #dii-page .letter-card { border-color: rgba(139,127,212,0.2); }
+  #dii-page .letter-card::before { background: radial-gradient(ellipse at 50% 0%, rgba(139,127,212,0.08), transparent 60%); }
+  #dii-page .letter-header { color: #d4ceef; }
+  #dii-page .letter-date { color: rgba(139,127,212,0.6); }
+  #dii-page .letter-body { color: #e8e4f5; }
+  #dii-page .back-btn { border-color: rgba(139,127,212,0.4); color: var(--dii-accent); }
+  #dii-page .page-icon { background: radial-gradient(circle at 35% 35%, #c4baef, #8b7fd4, #3d2f8b); box-shadow: 0 0 40px 10px rgba(139,127,212,0.3); }
+
+  /* FRIENDS PAGE */
+  #friends-page {
+    background: radial-gradient(ellipse at 50% -10%, #0a1f0f 0%, #080f0a 50%);
+  }
+  #friends-page .letter-accent { color: var(--friends-accent); }
+  #friends-page .letter-card { border-color: rgba(93,186,125,0.2); }
+  #friends-page .letter-card::before { background: radial-gradient(ellipse at 50% 0%, rgba(93,186,125,0.08), transparent 60%); }
+  #friends-page .letter-header { color: #c4eed3; }
+  #friends-page .letter-date { color: rgba(93,186,125,0.6); }
+  #friends-page .letter-body { color: #dff0e5; }
+  #friends-page .back-btn { border-color: rgba(93,186,125,0.4); color: var(--friends-accent); }
+  #friends-page .page-icon { background: radial-gradient(circle at 35% 35%, #a8e6be, #5dba7d, #1a6b3c); box-shadow: 0 0 40px 10px rgba(93,186,125,0.3); }
+
+  /* FULL-WIDTH IMAGE SECTION STYLES */
+  .image-section {
+    position: relative;
+    width: calc(100% + 80px);
+    margin-left: -40px;
+    margin-right: -40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #1a0a20;
+  }
+  .image-section .full-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    opacity: 1;
+    filter: none;
+  }
+  .image-section .full-image.no-crop {
+    height: 300px;
+    object-fit: contain;
+    background: #1a0a20;
+  }
+  .image-section.hero-image {
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-radius: 16px 16px 0 0;
+  }
+  .image-section.hero-image .full-image {
+    height: 450px;
+  }
+  .image-section .overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background: none;
+  }
+  .image-section .overlay-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #fff;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.6);
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+  .image-section .overlay-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5);
+    max-width: 85%;
+    margin: 10px auto 0;
+    line-height: 1.7;
+  }
+  .letter-content-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 600px) {
+    .image-section {
+      width: calc(100% + 48px);
+      margin-left: -24px;
+      margin-right: -24px;
+    }
+    .image-section .full-image { height: 250px; }
+    .image-section.hero-image .full-image { height: 300px; }
+  }
+  
+  /* LETTER COMPONENTS */
+  .page-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 24px;
+    animation: moonFloat 4s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+
+  .letter-tag {
+    font-family: 'Caveat', cursive;
+    font-size: 0.95rem;
+    padding: 6px 18px;
+    border-radius: 100px;
+    border: 1px solid currentColor;
+    margin-bottom: 32px;
+    opacity: 0.7;
+    animation: fadeInUp 0.8s ease both;
+  }
+
+  .letter-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid;
+    border-radius: 24px;
+    padding: clamp(28px, 5vw, 56px);
+    width: min(780px, 95vw);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.9s ease 0.1s both;
+  }
+  .letter-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .letter-date {
+    font-family: 'Caveat', cursive;
+    font-size: 0.95rem;
+    text-align: right;
+    margin-bottom: 28px;
+  }
+
+  .letter-header {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+
+  .letter-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+    line-height: 2;
+    font-weight: 300;
+  }
+  .letter-body p {
+    margin-bottom: 24px;
+  }
+  .letter-body .indent {
+    padding-left: 2em;
+    font-style: italic;
+  }
+  .letter-body .sign {
+    margin-top: 40px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    line-height: 1.8;
+  }
+
+  .back-btn {
+    margin-top: 40px;
+    padding: 12px 32px;
+    background: transparent;
+    border: 1px solid;
+    border-radius: 100px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeInUp 1s ease 0.2s both;
+  }
+  .back-btn:hover { transform: translateY(-3px); opacity: 0.8; }
+
+  /* DECORATIVE QUOTE */
+  .big-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem;
+    line-height: 0.5;
+    opacity: 0.08;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    pointer-events: none;
+    font-style: italic;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes floatUp1 {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+    50% { transform: translateY(-15px) rotate(10deg); opacity: 1; }
+  }
+
+  /* FLOATING DECORATIONS */
+  .floaters {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .floater {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.15;
+    animation: floatRandom var(--fd) ease-in-out infinite alternate;
+  }
+  @keyframes floatRandom {
+    from { transform: translateY(0) rotate(0deg); }
+    to { transform: translateY(-20px) rotate(15deg); }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<!-- STARS -->
+<div class="stars" id="stars"></div>
+
+<!-- ===== LOGIN PAGE ===== -->
+<div class="page active" id="login-page">
+  <div class="moon"></div>
+  <div class="login-title">Eid Mubarak 🌙</div>
+  <div class="login-sub">from Kabeer, with love ✨</div>
+  <div class="login-box">
+    <div class="pw-label">enter your key ✦</div>
+    <input class="pw-input" type="password" id="pw-input" placeholder="your secret word..." autocomplete="off" />
+    <button class="enter-btn" onclick="checkPassword()">Open ✦</button>
+    <div class="error-msg" id="error-msg">hmm... that's not right 🙈</div>
+  </div>
+</div>
+
+<!-- ===== LOVE PAGE (Anushka) ===== -->
+<div class="page letter-page" id="love-page">
+  <div class="floaters" id="love-floaters"></div>
+  <div class="page-icon">🌸</div>
+  <div class="letter-tag letter-accent">for you ✦ Eid Mubarak</div>
+  <div class="letter-card">
+    <!-- IMAGE 1: Hero banner at the top (no text overlay) -->
+    <div class="image-section hero-image">
+      <img src="ANUUUU images/Untitled(2).png" alt="" class="full-image" />
+    </div>
+
+    <div class="letter-content-wrapper">
+      <div class="big-quote">"</div>
+      <div class="letter-date">Date: 2026 / 03 / 19</div>
+      <div class="letter-header">Dear Anushka,</div>
+      <div class="letter-body">
+        <p>Eid Mubarak. 🌙</p>
+        <p>I know you probably didn't expect a letter from me. Maybe you didn't expect anything from me at all anymore. And honestly, I understand that. But I had promised myself — long before things became what they became — that I would wish you on Eid. I may not be able to say it to your face anymore. So I'm saying it here, in the only way I have left.</p>
+        <p>I'm not writing this to make you feel guilty. I'm not writing this to bring back something that was never fully mine to begin with. I'm writing this because you deserve to know — one last time, clearly, honestly — what you meant to me. What you still mean to me, if I'm being real.</p>
+        <p>Do you remember the first time we spoke? You didn't say hi. You didn't say hello. Your first word to me was <em>"bandar"</em> 🙂. I don't think you know this, but that was the exact moment something shifted in me. I don't know why. Maybe it was the way you said it — so effortlessly, like you'd known me forever. But from that day, you became a part of my daily life without even trying. I started looking forward to conversations I didn't even know how to start. I waited in GC for hours — <em>hours</em>, Anushka — just for a chance to talk to you. And the irony? When you were finally there, I never had the right words. I'd just sit there, happy just knowing you were around.</p>
+        <p>That's the thing about what I felt for you. It was never loud. It was never demanding. It was just... constant. Quiet. Real.</p>
+
+        <!-- IMAGE 2: Eyes close-up with paragraphs -->
+        <div class="image-section">
+          <img src="ANUUUU images/Untitled.png" alt="" class="full-image" />
+          <div class="overlay-text">
+            <p>"I used to start my mornings checking your ID — hoping, just maybe, I'd been unblocked. That I could send a simple 'good morning' and that would be enough. And my nights ended with your pictures on my screen, wondering about a version of life that probably was never meant for me. I know how that sounds. I know. But I'm not ashamed of it — because every bit of it was genuine."</p>
+          </div>
+        </div>
+
+        <p>When you told me you chose Numan, I didn't argue. I didn't beg. I just congratulated you — and I meant it. Because if there's one thing I always wanted above everything else, it was your happiness. Not mine. Yours. I had already prepared myself for this possibility somewhere deep down. I think I always knew. But knowing something and feeling it are two very different things, aren't they?</p>
+
+        <!-- IMAGE 3: Portrait cutout -->
+        <div class="image-section">
+          <img src="ANUUUU images/Anuuu1.png" alt="" class="full-image no-crop" />
+          <div class="overlay-text">
+            <p>"I'll be honest — I am jealous. Of course I am. He is lucky, Anushka. He is so, so lucky. Not because he 'won' something, but because he gets to be the person you chose. I tried, Anushka. I really did. I tried to be honest, to be sincere, to be someone worth choosing. Maybe I wasn't. But I don't regret a single moment of what I felt for you. Not one. Because it was real. It was the most real thing I've felt in a long time."</p>
+          </div>
+        </div>
+
+        <p>What I felt for you was never just attraction. It was something I can't fully put into words — something pure, something that made me want to be better, something that made ordinary days feel a little more meaningful. I can't say those three words... but I think you know. And I think somewhere, you always knew 🙂.</p>
+
+        <!-- IMAGE 4: With grudge quote -->
+        <div class="image-section">
+          <img src="ANUUUU images/Untitled(1).png" alt="" class="full-image" />
+          <div class="overlay-text">
+            <p>"I want you to know — and please believe me when I say this — I don't have a single grudge in my heart. Not one. Whatever happened, whatever was said, whatever wasn't said — I hold none of it against you. You never owed me anything. And I never gave you anything expecting something in return."</p>
+          </div>
+        </div>
+
+        <p>So on this Eid, I'm not making a dua for us. I'm making a dua for <em>you</em>.</p>
+        <p>I pray that Allah keeps you smiling. I pray that this year brings you peace, love, and everything your heart has quietly been asking for. I pray that you are surrounded by people who see your worth and never take it for granted. I pray that life is incredibly, beautifully kind to you — because you deserve that. Even though I'm Hindu, I fold my hands and ask Allah to take care of you. Because whatever name we call God by, the feeling behind the prayer is the same 🌸.</p>
+        <p>And Anushka — if life ever gets heavy, if you ever feel like there's no one around, if you ever need someone who will show up without judgment — you know where to find me. That door will never close. Not because I'm holding on, but because that's just who I am when it comes to you.</p>
+
+        <!-- IMAGE 5: Final image -->
+        <div class="image-section">
+          <img src="ANUUUU images/WhatsApp Image 2026-03-18 at 11.03.03 AM(2).jpeg" alt="" class="full-image" />
+          <div class="overlay-text">
+            <p>"And Anushka — if life ever gets heavy, if you ever feel like there's no one around, if you ever need someone who will show up without judgment — you know where to find me. That door will never close. Not because I'm holding on, but because that's just who I am when it comes to you. You will always have a corner in my heart — not as something I'm chasing, just as something I'm grateful for."</p>
+          </div>
+        </div>
+
+        <p>Thank you. For the laughs. For the <em>"bandar."</em> For the way you wore traditionals that one day and didn't even know what it did to my heart 💜. For the friendship. For being real with me, even when it hurt. For existing in my life, even briefly, even incompletely.</p>
+        <p>Be safe. Be happy. Be loved. 🌙✨</p>
+        <div class="sign">
+          Always your well-wisher,<br>
+          <strong>Kabeer ❤️</strong><br><br>
+          <em>"I love Gold." 🙂</em>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="back-btn" onclick="goBack()">← go back</button>
+</div>
+
+<!-- ===== DII PAGE ===== -->
+<div class="page letter-page" id="dii-page">
+  <div class="floaters" id="dii-floaters"></div>
+  <div class="page-icon">💜</div>
+  <div class="letter-tag letter-accent">for my Dii ✦ Eid Mubarak</div>
+  <div class="letter-card">
+    <div class="letter-content-wrapper">
+      <div class="big-quote">"</div>
+      <div class="letter-date">Date: 2026 / 03 / 19</div>
+      <div class="letter-header">Dear Dii,</div>
+      <div class="letter-body">
+        <p>Eid Mubarak. 🌙</p>
+        <p>I know I've said things to you before, written things before — but today, on this beautiful day, I felt like my heart had more left to say. So here I am again, with a pen and way too many feelings I don't know how to hold inside.</p>
+        <p>You know what's funny? I still don't fully understand how this happened. How someone who wasn't in my life just... became the most important part of it. There was no big moment, no dramatic beginning. You just slowly became someone I can't imagine my life without. And honestly, Dii — that's the most beautiful kind of bond. The ones that sneak up on you quietly and then stay forever.</p>
+        <p>Eid is a day of joy, of gratitude, of counting your blessings. And when I count mine today — you're right there at the top of the list. Not because of any single thing you did, but because of everything you <em>are</em>. You are warmth. You are patience. You are the kind of person who makes the people around her feel like they matter — and Dii, you've made me feel that more times than I can count.</p>
+        <p>I think about the little things a lot. The way you never made me feel like an outsider. The way you never asked me to explain myself or prove myself to you. You just... accepted me. As I am. Flaws, chaos, everything. Do you know how rare that is? In a world where everyone is constantly judging, constantly measuring — you were just <em>there</em>. Quietly, consistently, genuinely there. And that meant the world to me.</p>
+        <p>There was one moment I'll never forget. When Zeeshaan Bhai didn't like me — and you still stood up and asked why he doesn't like your brother Kabeer. That one moment, Dii. That one small sentence changed everything for me. Because in that moment you weren't just being kind — you were claiming me as yours. You were saying, <em>this is my brother</em>. And I don't think you'll ever fully understand what that did to my heart. I felt seen. I felt chosen. I felt like I belonged somewhere — and that somewhere was your family.</p>
+        <p>I want you to know that on this Eid, I'm making a dua for you. A really long, really sincere one. I'm asking Allah to give you everything you deserve — and Dii, you deserve <em>so much</em>. I'm asking for your happiness, your health, your peace of mind. I'm asking that every hardship in your life be replaced with ease, every tear be replaced with laughter, every moment of self-doubt be replaced with confidence. Because you, of all people, should never have to doubt yourself. You are incredible. I hope one day you see yourself the way I see you.</p>
+        <p>I also want to say something I don't say enough — thank you. Thank you for being someone I can be real with. Thank you for never making me feel like a burden. Thank you for checking in on me even when you had your own storms to deal with. Thank you for reminding me, without even trying, that I am stronger than I think. You've been a mirror for me, Dii — and every time I looked into it through your eyes, I saw a better version of myself.</p>
+        <p>Life is going to throw a lot at both of us. There will be hard days, confusing days, days where nothing makes sense. But I need you to always remember this — I am here. Not just when it's easy, not just when it's convenient — but always. On your brightest days and your darkest nights. Whenever you need someone to talk to, someone to vent to, someone to just sit with you in silence — I'm that person. I will always be that person. Khuda na khaasta, if life ever gets too heavy, please don't carry it alone. This brother of yours has strong enough shoulders. Let me be there. That's all I ask.</p>
+        <p>And Dii — please, kabhi chor ke mat jaana. I know life takes us in different directions sometimes. I know things change, people change, circumstances change. But please don't let <em>us</em> change. Don't let distance or time or anything else take away what we have. Because I genuinely cannot picture my life without you in it now. You've become too important. Too real. Too mine.</p>
+        <p>On this Eid, I pray that Allah blesses you beyond measure. I pray that this year brings you everything your heart has been quietly wishing for. I pray that you wake up every single morning feeling loved — because you are. By your family, by your friends, and by this one very grateful brother who found a sister in you without even looking.</p>
+        <p>Eid Mubarak, Dii. 🌙🤍<br>Aaj khub khao, khub haso, aur bas khush raho.</p>
+        <div class="sign">
+          Tumhara hi,<br>
+          <strong>Kabeer ❤️</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="back-btn" onclick="goBack()">← go back</button>
+</div>
+
+<!-- ===== FRIENDS PAGE ===== -->
+<div class="page letter-page" id="friends-page">
+  <div class="floaters" id="friends-floaters"></div>
+  <div class="page-icon">🍀</div>
+  <div class="letter-tag letter-accent">for my duffers ✦ Eid Mubarak</div>
+  <div class="letter-card">
+    <div class="letter-content-wrapper">
+      <div class="big-quote">"</div>
+      <div class="letter-date">Date: 2026 / 03 / 19</div>
+      <div class="letter-header">Dear my favorite duffers,</div>
+      <div class="letter-body">
+        <p>Eid Mubarak. 🌙</p>
+        <p>I don't say things like this out loud. You all know that. I'm the quiet one. The one sitting in the corner, laughing at everything but never really saying what's going on inside. The one who takes forever to reply but has read the message seventeen times already. That's just me. That's always been me.</p>
+        <p>But today, on this Eid, I need to say something. Properly. Because some feelings are too big to keep sitting inside my chest forever.</p>
+        <p>I want to tell you all something I've never said clearly —</p>
+        <p class="indent">Before you guys, I was really, really alone.</p>
+        <p>Not the "oh I'm so lonely" kind of alone that people say for attention. I mean genuinely, deeply alone. The kind where you sit in a room full of people and still feel invisible. The kind where you want to say something funny or something real, but the fear of being judged, of being too much, of being <em>not enough</em> — it just freezes you completely. So you say nothing. You smile. You nod. And you go home still carrying everything you wanted to say.</p>
+        <p>That was my life for a long time.</p>
+        <p>I had this wall around me. Built it brick by brick over the years every time someone made me feel like I was too weird, too quiet, too different to be worth knowing. I stopped trying to let people in because every time I did, they'd eventually leave anyway. And I told myself — okay, fine. Maybe I'm just not someone people stay for. Maybe that's just how my story goes.</p>
+        <p>And then you duffers happened. 😂</p>
+        <p>I don't even fully understand how. There was no big dramatic moment. No deep conversation where we decided to be friends. You all just... showed up. Randomly. Loudly. Chaotically. In the most unplanned way possible. And somehow, before I even realized it, that wall I spent years building — you all had already walked right through it like it was nothing.</p>
+        <p>Suddenly I was talking. Actually talking. Sharing things I'd never said out loud before. Laughing without calculating whether it was too much. Being weird without apologizing for it. And the most shocking part? Nobody left. Nobody judged. Nobody made me feel like I was too much or not enough.</p>
+        <p>You made me feel <em>safe</em>. Do you know how huge that is for someone like me?</p>
+        <p>I want to be honest with you all about something — I am terrified of losing you. More than I let on. Because I've lost people before. Good people. People I loved. And every single time, I've looked back and thought — <em>was it me? Did I do something wrong? Am I just too hard to stay for?</em> That fear lives in me every single day. The fear that one day I'll make a mistake, say the wrong thing, go quiet for too long — and you'll all slowly drift away like everyone else did.</p>
+        <p>So I want to say this clearly, right now, so you all know —</p>
+        <p>If I ever mess up, I'm sorry in advance. If I ever go quiet for too long, please don't think I don't care — I probably care too much and don't know how to show it. If I ever say something stupid or do something that hurts you, tell me. Please just tell me. I would rather have an awkward conversation a hundred times than lose any of you. I am bad at maintaining relationships — I know that about myself. But I am trying. I really am. And the fact that I'm trying at all — that's because of you. Because you made it feel worth trying for.</p>
+        <p>I also need to say something that I think about a lot but never say out loud —</p>
+        <p class="indent">I got you all because of Anuu.</p>
+        <p>And I will always, always be grateful for that. Even now, even through everything — that's something I can never take away from her. She unknowingly gave me the greatest gift I've ever received. She gave me <em>you guys</em>. And that means more to me than words can do justice to.</p>
+        <p>You came into my life and completely rewrote what friendship means to me. You showed me that not everyone leaves. That some people actually stay. That it's okay to be the quiet, introverted, slightly chaotic mess that I am — and still be loved for it. You gave me a space where I don't have to perform or pretend or shrink myself down. And I don't take that lightly. Not even for a second.</p>
+        <p>On this Eid, I'm making a dua for each of you. For your happiness, your health, your dreams. I pray that life is incredibly good to you — because you deserve it. I pray that whatever you're chasing this year, you catch it. I pray that the people in your life see your value and never make you feel otherwise.</p>
+        <p>And I pray that we stay. Through the busy days, through the distance, through the stupid arguments and the long silences — I pray that we always find our way back to each other. Because I don't want to imagine a version of my life without you duffers in it. You're not just friends anymore. You're home.</p>
+        <p>Thank you for finding me. Thank you for staying. Thank you for making a very lonely, very guarded, very introverted guy feel like maybe — just maybe — he's someone worth knowing after all.</p>
+        <p>Eid Mubarak, you absolute duffers. 🥹🎉<br>Ab jao khana khao aur mujhe tag karo har cheez mein. 😂🌙</p>
+        <div class="sign">
+          Always yours,<br>
+          <strong>Kabeer ❤️</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="back-btn" onclick="goBack()">← go back</button>
+</div>
+
+<script>
+  // Generate stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%; left:${Math.random()*100}%;
+      --d:${Math.random()*3+2}s;
+      animation-delay:${Math.random()*3}s;
+    `;
+    starsEl.appendChild(s);
+  }
+
+  // Generate floaters
+  function makeFloaters(containerId, emojis) {
+    const el = document.getElementById(containerId);
+    emojis.forEach((emoji, i) => {
+      const f = document.createElement('div');
+      f.className = 'floater';
+      f.textContent = emoji;
+      f.style.cssText = `
+        top:${Math.random()*90}%; left:${Math.random()*90}%;
+        --fd:${Math.random()*4+4}s;
+        animation-delay:${i*0.7}s;
+        font-size:${Math.random()*1.5+1}rem;
+      `;
+      el.appendChild(f);
+    });
+  }
+
+  makeFloaters('love-floaters', ['🌸','💌','🌙','✨','💜','🌺','🕊️','🌹','💫','🌷']);
+  makeFloaters('dii-floaters', ['💜','🌙','✨','🤍','⭐','🌸','🫶','🕊️','💫','🌟']);
+  makeFloaters('friends-floaters', ['🎉','😂','🌙','✨','🍀','💚','🎊','🤝','💫','🌟']);
+
+  // Password check
+  function checkPassword() {
+    const pw = document.getElementById('pw-input').value.trim().toLowerCase();
+    const error = document.getElementById('error-msg');
+
+    if (pw === 'monkey') {
+      showPage('love-page');
+    } else if (pw === 'brother') {
+      showPage('dii-page');
+    } else if (pw === 'bg') {
+      showPage('friends-page');
+    } else {
+      error.classList.add('show');
+      document.getElementById('pw-input').style.borderColor = '#ff8a9a';
+      setTimeout(() => {
+        error.classList.remove('show');
+        document.getElementById('pw-input').style.borderColor = 'rgba(201,168,76,0.3)';
+      }, 2500);
+    }
+  }
+
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    window.scrollTo(0, 0);
+    document.getElementById('pw-input').value = '';
+    if (pageId !== 'login-page') {
+      sessionStorage.setItem('currentPage', pageId);
+    }
+  }
+
+  function goBack() {
+    sessionStorage.removeItem('currentPage');
+    showPage('login-page');
+  }
+
+  // Restore page on refresh
+  const savedPage = sessionStorage.getItem('currentPage');
+  if (savedPage) {
+    showPage(savedPage);
+  }
+
+  // Enter key support
+  document.getElementById('pw-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkPassword();
+  });
+</script>
+</body>
+</html>
