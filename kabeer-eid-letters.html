@@ -231,30 +231,29 @@
   /* FULL-WIDTH IMAGE SECTION STYLES */
   .image-section {
     position: relative;
-    width: 100%;
+    width: calc(100% + 80px);
+    margin-left: -40px;
+    margin-right: -40px;
     margin-top: 15px;
     margin-bottom: 15px;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 0;
     background: transparent;
   }
   .image-section .full-image {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 350px;
+    object-fit: cover;
     display: block;
     opacity: 1;
     filter: none;
   }
   .image-section .full-image.no-crop {
-    height: auto;
+    height: 300px;
     object-fit: contain;
     background: transparent;
   }
   .image-section.hero-image {
-    width: calc(100% + 80px);
-    margin-left: -40px;
-    margin-right: -40px;
     margin-top: 0;
     margin-bottom: 20px;
     border-radius: 0;
