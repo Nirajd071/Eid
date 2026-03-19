@@ -231,13 +231,11 @@
   /* FULL-WIDTH IMAGE SECTION STYLES */
   .image-section {
     position: relative;
-    width: calc(100% + 80px);
-    margin-left: -40px;
-    margin-right: -40px;
+    width: 100%;
     margin-top: 15px;
     margin-bottom: 15px;
     overflow: hidden;
-    border-radius: 0;
+    border-radius: 12px;
     background: transparent;
   }
   .image-section .full-image {
@@ -254,6 +252,9 @@
     background: transparent;
   }
   .image-section.hero-image {
+    width: calc(100% + 80px);
+    margin-left: -40px;
+    margin-right: -40px;
     margin-top: 0;
     margin-bottom: 20px;
     border-radius: 0;
