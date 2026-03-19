@@ -364,6 +364,41 @@
       box-shadow: 0 0 40px 10px rgba(93, 186, 125, 0.3);
     }
 
+    /* BACKGROUND IMAGE TEXT SECTIONS */
+    .bg-section {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 12px;
+      padding: 40px 30px;
+      margin: 15px 0;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bg-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+    }
+    .bg-section p {
+      position: relative;
+      z-index: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      text-align: center;
+      line-height: 1.8;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+
     /* FULL-WIDTH IMAGE SECTION STYLES */
     .image-section {
       position: relative;
@@ -701,15 +736,12 @@
           <p>That's the thing about what I felt for you. It was never loud. It was never demanding. It was just...
             constant. Quiet. Real.</p>
 
-          <!-- IMAGE 2: Eyes close-up with paragraphs -->
-          <div class="image-section">
-            <img src="ANUUUU images/Untitled.png" alt="" class="full-image" />
-            <div class="overlay-text">
-              <p>"I used to start my mornings checking your ID — hoping, just maybe, I'd been unblocked. That I could
-                send a simple 'good morning' and that would be enough. And my nights ended with your pictures on my
-                screen, wondering about a version of life that probably was never meant for me. I know how that sounds.
-                I know. But I'm not ashamed of it — because every bit of it was genuine."</p>
-            </div>
+          <!-- IMAGE 2: Background with text -->
+          <div class="bg-section" style="background-image: url('ANUUUU images/Untitled.png');">
+            <p>"I used to start my mornings checking your ID — hoping, just maybe, I'd been unblocked. That I could
+              send a simple 'good morning' and that would be enough. And my nights ended with your pictures on my
+              screen, wondering about a version of life that probably was never meant for me. I know how that sounds.
+              I know. But I'm not ashamed of it — because every bit of it was genuine."</p>
           </div>
 
           <p>When you told me you chose Numan, I didn't argue. I didn't beg. I just congratulated you — and I meant it.
@@ -717,16 +749,13 @@
             I had already prepared myself for this possibility somewhere deep down. I think I always knew. But knowing
             something and feeling it are two very different things, aren't they?</p>
 
-          <!-- IMAGE 3: Portrait cutout -->
-          <div class="image-section">
-            <img src="ANUUUU images/Anuuu1.png" alt="" class="full-image no-crop" />
-            <div class="overlay-text">
-              <p>"I'll be honest — I am jealous. Of course I am. He is lucky, Anushka. He is so, so lucky. Not because
-                he 'won' something, but because he gets to be the person you chose. I tried, Anushka. I really did. I
-                tried to be honest, to be sincere, to be someone worth choosing. Maybe I wasn't. But I don't regret a
-                single moment of what I felt for you. Not one. Because it was real. It was the most real thing I've felt
-                in a long time."</p>
-            </div>
+          <!-- IMAGE 3: Background with text -->
+          <div class="bg-section" style="background-image: url('ANUUUU images/Anuuu1.png');">
+            <p>"I'll be honest — I am jealous. Of course I am. He is lucky, Anushka. He is so, so lucky. Not because
+              he 'won' something, but because he gets to be the person you chose. I tried, Anushka. I really did. I
+              tried to be honest, to be sincere, to be someone worth choosing. Maybe I wasn't. But I don't regret a
+              single moment of what I felt for you. Not one. Because it was real. It was the most real thing I've felt
+              in a long time."</p>
           </div>
 
           <p>What I felt for you was never just attraction. It was something I can't fully put into words — something
@@ -734,14 +763,11 @@
             meaningful. I can't say those three words... but I think you know. And I think somewhere, you always knew
             🙂.</p>
 
-          <!-- IMAGE 4: With grudge quote -->
-          <div class="image-section">
-            <img src="ANUUUU images/Untitled(1).png" alt="" class="full-image" />
-            <div class="overlay-text">
-              <p>"I want you to know — and please believe me when I say this — I don't have a single grudge in my heart.
-                Not one. Whatever happened, whatever was said, whatever wasn't said — I hold none of it against you. You
-                never owed me anything. And I never gave you anything expecting something in return."</p>
-            </div>
+          <!-- IMAGE 4: Background with text -->
+          <div class="bg-section" style="background-image: url('ANUUUU images/Untitled(1).png');">
+            <p>"I want you to know — and please believe me when I say this — I don't have a single grudge in my heart.
+              Not one. Whatever happened, whatever was said, whatever wasn't said — I hold none of it against you. You
+              never owed me anything. And I never gave you anything expecting something in return."</p>
           </div>
 
           <p>So on this Eid, I'm not making a dua for us. I'm making a dua for <em>you</em>.</p>
@@ -751,15 +777,11 @@
             Even though I'm Hindu, I fold my hands and ask Allah to take care of you. Because whatever name we call God
             by, the feeling behind the prayer is the same 🌸.</p>
 
-          <!-- IMAGE 5: Final image -->
-          <div class="image-section">
-            <img src="ANUUUU images/WhatsApp Image 2026-03-18 at 11.03.03 AM(2).jpeg" alt="" class="full-image" />
-            <div class="overlay-text">
-              <p>"And Anushka — if life ever gets heavy, if you ever feel like there's no one around, if you ever need
-                someone who will show up without judgment — you know where to find me. That door will never close. Not
-                because I'm holding on, but because that's just who I am when it comes to you. You will always have a
-                corner in my heart — not as something I'm chasing, just as something I'm grateful for."</p>
-            </div>
+          <!-- IMAGE 5: Background with text -->
+          <div class="bg-section" style="background-image: url('ANUUUU images/WhatsApp Image 2026-03-18 at 11.03.03 AM(2).jpeg');">
+            <p>"And Anushka — if life ever gets heavy, if you ever feel like there's no one around, if you ever need
+              someone who will show up without judgment — you know where to find me. That door will never close. Not
+              because I'm holding on, but because that's just who I am when it comes to you."</p>
           </div>
 
           <p>Thank you. For the laughs. For the <em>"bandar."</em> For the way you wore traditionals that one day and
