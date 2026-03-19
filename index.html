@@ -672,10 +672,10 @@
 
   // Password check
   function checkPassword() {
-    const pw = document.getElementById('pw-input').value.trim().toLowerCase();
+    const pw = document.getElementById('pw-input').value.trim();
     const error = document.getElementById('error-msg');
 
-    if (pw === 'monkey') {
+    if (pw === 'monKEY') {
       showPage('love-page');
     } else if (pw === 'brother') {
       showPage('dii-page');
