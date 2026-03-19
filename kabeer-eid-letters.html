@@ -237,8 +237,8 @@
     margin-top: 15px;
     margin-bottom: 15px;
     overflow: hidden;
-    border-radius: 16px;
-    background: #1a0a20;
+    border-radius: 0;
+    background: transparent;
   }
   .image-section .full-image {
     width: 100%;
@@ -251,12 +251,17 @@
   .image-section .full-image.no-crop {
     height: 300px;
     object-fit: contain;
-    background: #1a0a20;
+    background: transparent;
   }
   .image-section.hero-image {
     margin-top: 0;
     margin-bottom: 20px;
-    border-radius: 16px 16px 0 0;
+    border-radius: 0;
+  }
+  .image-section.hero-image.dii-hero .full-image {
+    height: auto;
+    max-height: none;
+    object-fit: contain;
   }
   .image-section.hero-image .full-image {
     height: 450px;
@@ -549,7 +554,7 @@
   <div class="letter-tag letter-accent">for my Dii ✦ Eid Mubarak</div>
   <div class="letter-card">
     <!-- Hero image for Dii -->
-    <div class="image-section hero-image">
+    <div class="image-section hero-image dii-hero">
       <img src="Diii/Diii.png" alt="" class="full-image" />
     </div>
 
